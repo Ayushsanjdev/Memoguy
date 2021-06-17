@@ -1,4 +1,5 @@
 {
-  "editor.fontSize": 13,
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "editor.fontFamily": "'source code pro', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.fontSize": 17
 }
