@@ -7,3 +7,5 @@ const LeftSideBar = () => {
     </div>
   )
 }
+
+export default LeftSideBar;
