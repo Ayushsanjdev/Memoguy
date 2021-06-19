@@ -12,8 +12,10 @@ const App = () => {
         <h1>Memoguy</h1>
       </header>
       <NewNote/>
-      <LeftSideBar/>
-      <RightSideBar/>
+      <main>
+        <LeftSideBar/>
+        <RightSideBar/>
+      </main>
     </div>
   )
 }

@@ -1,13 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+/* * {
+  border: 1px solid green;
+} */
+
 body {
   max-width: 1220px;
   margin: 0 auto;
-  background-color: ;
+  font-family: Open Sans;
+  background-color: aquamarine;
+  
 }
 
-h1 {
-  font-family: 'Courier New', Courier, monospace;
+.App {
+  width: 95%;
+  margin: 0 auto;
+}
+
+header {
+  padding: 1rem;
 }
 
 .addBtn {
-  
+  padding: 1rem;
+}
+
+main {
+  display: flex;
+}
+
+.reactQuill {
+  width: 100%;
 }

@@ -8,12 +8,14 @@ import { FixedSizeList } from 'react-window';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    height: 400,
-    maxWidth: 300,
+    height: '100vh',
+    maxWidth: 150,
     backgroundColor: theme.palette.background.paper,
   },
   list: {
     border: '1px solid lightgrey',
+    width: '100%',
+    backgroundColor: 'spacegrey'
   }
 }));
 
@@ -37,7 +39,7 @@ const LeftSideBar = () => {
 
   return (
     <div className={classes.root}>
-      <FixedSizeList height={400} width={300} itemSize={46} itemCount={10}>
+      <FixedSizeList height={400} width={150} itemSize={46} itemCount={10}>
         {renderRow}
       </FixedSizeList>
     </div>

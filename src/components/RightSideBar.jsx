@@ -1,10 +1,12 @@
 import React from 'react';
+import ReactQuill from 'react-quill';
 
 const RightSideBar = () => {
   return(
-    <div>
-      <p>Right Side Bar</p>
+    <div className="reactQuill">
+      <ReactQuill></ReactQuill>
     </div>
+    
   )
 }
 
