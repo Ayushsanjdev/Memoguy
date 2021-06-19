@@ -1,9 +1,10 @@
 import React from 'react';
+import { Button } from '@material-ui/core';
 
 const NewNote = () => {
   return(
     <div>
-      this is new note
+      <Button variant="contained" className="addBtn">Add</Button>
     </div>
   )
 }
