@@ -1,14 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
-/* * {
-  border: 1px solid green;
-} */
-
 body {
   max-width: 1220px;
   margin: 0 auto;
   font-family: Open Sans;
-  background-color: aquamarine;
   
 }
 
@@ -17,18 +12,20 @@ body {
   margin: 0 auto;
 }
 
-header {
-  padding: 1rem;
-}
-
 .addBtn {
   padding: 1rem;
 }
 
 main {
   display: flex;
+  border: 1px groove lightcoral;
+}
+
+.editor {
+  width: 100%;
+  height: 100vh;
 }
 
 .reactQuill {
-  width: 100%;
+  height: 100%;
 }

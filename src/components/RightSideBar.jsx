@@ -3,8 +3,8 @@ import ReactQuill from 'react-quill';
 
 const RightSideBar = () => {
   return(
-    <div className="reactQuill">
-      <ReactQuill></ReactQuill>
+    <div className="editor">
+      <ReactQuill className="reactQuill"></ReactQuill>
     </div>
     
   )
