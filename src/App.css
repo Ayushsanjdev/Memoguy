@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Pacifico&display=swap');
 
 body {
   max-width: 1220px;
   margin: 0 auto;
-  font-family: Open Sans;
-  
+  background-color: antiquewhite;
 }
 
 .App {
@@ -12,20 +11,67 @@ body {
   margin: 0 auto;
 }
 
-.addBtn {
+header {
+  font-family: Pacifico;
+  display: flex;
+  justify-content: space-between;
   padding: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+.reactSpring {
+  align-self: center;
+}
+
+.reactSpring .newnote {
+  padding: 0.8rem 1rem;
+  font-size: 14px;
+  border: transparent;
+  border-radius: 5px;
+  background-color: dodgerblue;
+  color: white;
+  cursor: pointer;
+}
+
+.newnote:hover {
+  background-color: chocolate;
+  transition: all 500ms;
 }
 
 main {
   display: flex;
-  border: 1px groove lightcoral;
+  background-color: aliceblue;
 }
 
 .editor {
   width: 100%;
-  height: 100vh;
+  height: 100%;
 }
 
 .reactQuill {
-  height: 100%;
+  height: 410px;
+}
+
+.open {
+  display: flex;
+  
+}
+
+small {
+  padding: 5px;
+  margin-top: 35px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  align-self: center;
+  color: rgb(255, 75, 9);
+}
+
+.deleteIcon:hover {
+  color: red;
+}
+
+.listClick {
+  background-color: aquamarine;
 }

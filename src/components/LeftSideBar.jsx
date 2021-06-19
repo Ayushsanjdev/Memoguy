@@ -4,27 +4,38 @@ import { makeStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { FixedSizeList } from 'react-window';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    maxWidth: 150,
-    backgroundColor: 'lightblue',
+    maxWidth: 200,
   },
   list: {
-    border: '1px solid black',
     width: '100%',
-    backgroundColor: 'spacegrey'
+    padding: '1rem',
+    backgroundColor: 'primary'
   }
 }));
 
 function renderRow(props) {
   const { index, style } = props;
 
+  const deleteNote = (ListItemText, index) => {
+    
+  }
+
+  const addColor = (e) => {
+    e.target.clicked ? 'grey' : ''
+  }
+
   return (
-    <ListItem button style={style} key={index} className={useStyles().list} >
+    <>
+    <ListItem button style={style} key={index} className={useStyles().list} onClick={addColor} >
       <ListItemText primary={'new note'} />
+      <DeleteIcon onClick={deleteNote} className="deleteIcon" />
     </ListItem>
+    </>
   );
 }
 
@@ -38,7 +49,7 @@ const LeftSideBar = () => {
 
   return (
     <div className={classes.root}>
-      <FixedSizeList height={450} width={150} itemSize={46} itemCount={10}>
+      <FixedSizeList height={450} width={200} itemSize={66} itemCount={5}>
         {renderRow}
       </FixedSizeList>
     </div>
