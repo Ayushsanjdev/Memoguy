@@ -21,19 +21,19 @@ const useStyles = makeStyles((theme) => ({
 function renderRow(props) {
   const { index, style } = props;
 
-  const deleteNote = (ListItemText, index) => {
+  // const deleteNote = (ListItemText, index) => {
     
-  }
+  // }
 
-  const addColor = (e) => {
-    e.target.clicked ? 'grey' : ''
-  }
+  // const addColor = (e) => {
+  //   e.target.clicked ? 'grey' : ''
+  // }
 
   return (
     <>
-    <ListItem button style={style} key={index} className={useStyles().list} onClick={addColor} >
+    <ListItem button style={style} key={index} className={useStyles().list} >
       <ListItemText primary={'new note'} />
-      <DeleteIcon onClick={deleteNote} className="deleteIcon" />
+      <DeleteIcon className="deleteIcon" />
     </ListItem>
     </>
   );
@@ -49,7 +49,7 @@ const LeftSideBar = () => {
 
   return (
     <div className={classes.root}>
-      <FixedSizeList height={450} width={200} itemSize={66} itemCount={5}>
+      <FixedSizeList height={450} width={200} itemSize={56} itemCount={15}>
         {renderRow}
       </FixedSizeList>
     </div>
