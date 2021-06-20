@@ -1,13 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Pacifico&display=swap');
 
 body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   max-width: 1220px;
   margin: 0 auto;
   background-color: antiquewhite;
 }
 
+*::-webkit-scrollbar {
+  width: 5px;               /* width of the entire scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+  background: rgb(233, 224, 207);        /* color of the tracking area */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(93, 188, 201);    /* color of the scroll thumb */
+  border-radius: 20px;
+  border: 1px groove lightblue;       /* roundness of the scroll thumb */ /* creates padding around scroll thumb */
+}
+
 .App {
   width: 95%;
+  height: 105vh;
   margin: 0 auto;
 }
 
@@ -15,7 +33,6 @@ header {
   font-family: Pacifico;
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
 }
 
 h1 {
@@ -27,8 +44,10 @@ h1 {
 }
 
 .reactSpring .newnote {
+  font-family: Open sans;
   padding: 0.8rem 1rem;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: bold;
   border: transparent;
   border-radius: 5px;
   background-color: dodgerblue;
@@ -44,15 +63,20 @@ h1 {
 main {
   display: flex;
   background-color: aliceblue;
+  border-radius: 10px;
+  border: none;
 }
+
+
 
 .editor {
   width: 100%;
-  height: 100%;
+  height: 100%; 
 }
 
 .reactQuill {
   height: 410px;
+  
 }
 
 .open {
@@ -63,7 +87,7 @@ main {
 small {
   padding: 5px;
   margin-top: 35px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: Open sans;
   align-self: center;
   color: rgb(255, 75, 9);
 }
@@ -74,4 +98,22 @@ small {
 
 .listClick {
   background-color: aquamarine;
+}
+
+a {
+  color: rgb(255, 0, 55);
+  text-decoration: none;
+}
+
+footer {
+  background-color: rgba(51, 51, 51, 0.26);
+  color: #fff;
+  font-family: Open sans;
+  font-size: smaller;
+  padding: 0.3rem 0;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
