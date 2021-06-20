@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import { useSpring, animated } from 'react-spring';
+// import db from '../firebase/config';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '10px',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    fontFamily: 'sans-serif'
+    fontFamily: 'sans-serif',
   },
 }));
 
@@ -53,7 +54,7 @@ Fade.propTypes = {
   onExited: PropTypes.func,
 };
 
-export default function SpringModal() {
+export default function SpringModal({setShowTitle, addTitle}) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -64,6 +65,17 @@ export default function SpringModal() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleInput = (e) => {
+    if(e.key == 'Enter') {
+      setShowTitle(e.target.value);
+      addTitle(e.target.value);
+      setOpen(false);
+    } else {
+      ''
+    }
+    
+  }
 
   return (
     <div className="reactSpring">
@@ -88,7 +100,7 @@ export default function SpringModal() {
             <label id="spring-modal-description">
               <input 
                 type="text/number" 
-                onKeyPress={(e) => e.key == 'Enter' ? setOpen(false): '' } />
+                onKeyPress={handleInput} />
             </label>
           </div>
         </Fade>
