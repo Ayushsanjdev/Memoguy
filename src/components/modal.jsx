@@ -10,10 +10,12 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    borderRadius: '10px',
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
+    borderRadius: '10px',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
     fontFamily: 'sans-serif'
@@ -77,7 +79,7 @@ export default function SpringModal() {
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
-          timeout: 500,
+          timeout: 800,
         }}
       >
         <Fade in={open}>
