@@ -6,50 +6,45 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { FixedSizeList } from 'react-window';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-    maxWidth: 200,
-  },
-  list: {
-    width: '100%',
-    padding: '1rem',
-    backgroundColor: 'primary'
-  }
-}));
+const LeftSideBar = ({showTitle}) => {
 
-function renderRow(props) {
-  const { index, style } = props;
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      width: '100%',
+      maxWidth: 200,
+    },
+    list: {
+      width: '100%',
+      padding: '1rem',
+      borderRadius: '10px',
+      backgroundColor: 'lightblue'
+    }
+  }));
 
-  // const deleteNote = (ListItemText, index) => {
-    
-  // }
-
-  // const addColor = (e) => {
-  //   e.target.clicked ? 'grey' : ''
-  // }
-
-  return (
-    <>
-    <ListItem button style={style} key={index} className={useStyles().list} >
-      <ListItemText primary={'new note'} />
-      <DeleteIcon className="deleteIcon" />
-    </ListItem>
-    </>
-  );
-}
-
-renderRow.propTypes = {
-  index: PropTypes.number.isRequired,
-  style: PropTypes.object.isRequired,
-};
-
-const LeftSideBar = () => {
   const classes = useStyles();
+
+  function renderRow(props) {
+    const { index, style } = props;
+  
+    return (
+      <>
+      <ListItem button style={style} key={index} className={useStyles().list} >
+        <ListItemText primary={showTitle} />
+        <DeleteIcon className="deleteIcon" />
+      </ListItem>
+      </>
+    );
+  }
+
+  renderRow.propTypes = {
+    index: PropTypes.number.isRequired,
+    style: PropTypes.object.isRequired,
+  };
 
   return (
     <div className={classes.root}>
-      <FixedSizeList height={450} width={200} itemSize={56} itemCount={15}>
+      <FixedSizeList height={450} width={200} 
+        itemSize={56} itemCount={1}>
         {renderRow}
       </FixedSizeList>
     </div>

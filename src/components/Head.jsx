@@ -1,15 +1,14 @@
 import React from 'react';
-import { Button } from '@material-ui/core';
 import SpringModal from './modal';
 
-const Head = () => {
+const Head = ({setShowTitle, addTitle}) => {
   return(
     <header>
       <div className="open">
       <h1>Memoguy </h1>
       <small> open</small>
       </div>
-      <SpringModal/>
+      <SpringModal setShowTitle={setShowTitle} addTitle={addTitle} />
     </header>
   )
 }
