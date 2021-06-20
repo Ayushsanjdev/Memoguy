@@ -13,6 +13,10 @@ const App = () => {
         <LeftSideBar/>
         <RightSideBar/>
       </main>
+      <footer>
+        Made with 💕 by 
+        <a href="https://github.com/ayushsanjdev"> ayushsanjdev</a>
+      </footer>
     </div>
   )
 }
