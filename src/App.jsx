@@ -1,10 +1,10 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Head from './components/Head';
 import LeftSideBar from './components/LeftSideBar';
 import RightSideBar from './components/RightSideBar';
-import db from './firebase/config';
-import firebase from 'firebase';
+// import db from './firebase/config';
+import firebase from 'firebase/app';
 import 'firebase/firestore';
 
 const App = () => {
@@ -16,7 +16,7 @@ const App = () => {
   // }, [])
 
   const getData = () => {
-    db.collection("notes").get().then((doc) => {
+    firebase.firestore().collection("notes").get().then((doc) => {
     if(doc.exists) {
       console.log("doc data: ", doc.data());
     } else {
@@ -27,7 +27,7 @@ const App = () => {
   })}
 
 
-  const addTitle = (input) => {
+  const addData = (input) => {
     firebase.firestore().collection("notes").add({
     title: input,
     createdAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -41,7 +41,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Head setShowTitle={setShowTitle} addTitle={addTitle} />
+      <Head setShowTitle={setShowTitle} addData={addData} />
       <main>
         <LeftSideBar showTitle={showTitle} />
         <RightSideBar/>
