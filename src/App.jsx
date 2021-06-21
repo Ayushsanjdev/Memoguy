@@ -3,33 +3,32 @@ import './App.css';
 import Head from './components/Head';
 import LeftSideBar from './components/LeftSideBar';
 import RightSideBar from './components/RightSideBar';
-// import db from './firebase/config';
+import './firebase/config';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
 const App = () => {
 
-  const [showTitle, setShowTitle] = useState('');
+  const [showNotes, setShowNotes] = useState([]);
 
   // useEffect(() => {
   //   getData()
   // }, [])
 
   const getData = () => {
-    firebase.firestore().collection("notes").get().then((doc) => {
-    if(doc.exists) {
-      console.log("doc data: ", doc.data());
-    } else {
-      console.log("no such doc");
-    }
-  }).catch((error) => {
-    console.log("error getting doc: ", error)
-  })}
+    firebase.firestore().collection("notes").orderBy("createdAt", "desc").onSnapshot((querySnapshot) => {
+      querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        title: doc.data().title,
+        body: doc.data().body,
+      }))
+    })}
 
 
   const addData = (input) => {
     firebase.firestore().collection("notes").add({
     title: input,
+    body: 'body-pending',
     createdAt: firebase.firestore.FieldValue.serverTimestamp()
   })
   .then(() => {
@@ -41,9 +40,9 @@ const App = () => {
 
   return (
     <div className="App">
-      <Head setShowTitle={setShowTitle} addData={addData} />
+      <Head setShowNotes={setShowNotes} addData={addData} />
       <main>
-        <LeftSideBar showTitle={showTitle} />
+        <LeftSideBar showNotes={showNotes} />
         <RightSideBar/>
       </main>
       <footer>
