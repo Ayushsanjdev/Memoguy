@@ -25,14 +25,16 @@ const LeftSideBar = ({ showNotes }) => {
   function renderRow(props) {
     const { index, style } = props;
 
-    return showNotes.map((notes) => (
-      <>
-        <ListItem button style={style} key={index} className={useStyles().list}>
-          <ListItemText primary={showNotes.notes} />
+    return(
+      showNotes.map((notes) => (
+        <ListItem button style={style} key={notes.id} className={useStyles().list}>
+          <ListItemText primary={notes.notes} />
           <DeleteIcon className="deleteIcon" />
         </ListItem>
-      </>
-    ));
+      ))
+      
+    )
+        
   }
 
   renderRow.propTypes = {
@@ -42,7 +44,7 @@ const LeftSideBar = ({ showNotes }) => {
 
   return (
     <div className={classes.root}>
-      <FixedSizeList height={450} width={200} itemSize={56} itemCount={5}>
+      <FixedSizeList height={450} width={200} itemSize={56} itemCount={showNotes.length}>
         {renderRow}
       </FixedSizeList>
     </div>

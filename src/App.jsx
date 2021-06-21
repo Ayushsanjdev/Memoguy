@@ -12,7 +12,7 @@ const App = () => {
 
   useEffect(() => {
     getData();
-  }, [showNotes]);
+  }, []);
 
   const getData = () => {
     firebase
@@ -20,20 +20,23 @@ const App = () => {
       .collection("notes")
       .orderBy("createdAt", "desc")
       .onSnapshot((querySnapshot) => {
+      setShowNotes(
         querySnapshot.docs.map((doc) => ({
           id: doc.id,
           title: doc.data().title,
           body: doc.data().body,
-        }));
+        }))
+      )
+        
       });
   };
 
-  const addData = (input) => {
+  const addData = () => {
     firebase
       .firestore()
       .collection("notes")
       .add({
-        title: input,
+        title: showNotes,
         body: "body-pending",
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       })

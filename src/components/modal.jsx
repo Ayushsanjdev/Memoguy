@@ -69,7 +69,7 @@ export default function SpringModal({ setShowNotes, addData }) {
   const handleInput = (e) => {
     if (e.key == "Enter") {
       setShowNotes(e.target.value);
-      addData(e.target.value);
+      addData();
       handleClose();
     } else {
       ("");
