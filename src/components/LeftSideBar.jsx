@@ -6,7 +6,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import { FixedSizeList } from 'react-window';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-const LeftSideBar = ({showTitle}) => {
+const LeftSideBar = ({showNotes}) => {
 
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -29,7 +29,7 @@ const LeftSideBar = ({showTitle}) => {
     return (
       <>
       <ListItem button style={style} key={index} className={useStyles().list} >
-        <ListItemText primary={showTitle} />
+        <ListItemText primary={showNotes} />
         <DeleteIcon className="deleteIcon" />
       </ListItem>
       </>
@@ -44,7 +44,7 @@ const LeftSideBar = ({showTitle}) => {
   return (
     <div className={classes.root}>
       <FixedSizeList height={450} width={200} 
-        itemSize={56} itemCount={1}>
+        itemSize={56} itemCount={5}>
         {renderRow}
       </FixedSizeList>
     </div>
