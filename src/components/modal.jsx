@@ -54,7 +54,7 @@ Fade.propTypes = {
   onExited: PropTypes.func,
 };
 
-export default function SpringModal({setShowTitle, addTitle}) {
+export default function SpringModal({setShowTitle, addData}) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -69,7 +69,7 @@ export default function SpringModal({setShowTitle, addTitle}) {
   const handleInput = (e) => {
     if(e.key == 'Enter') {
       setShowTitle(e.target.value);
-      addTitle(e.target.value);
+      addData(e.target.value);
       setOpen(false);
     } else {
       ''

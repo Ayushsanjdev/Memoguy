@@ -16,7 +16,7 @@ const LeftSideBar = ({showTitle}) => {
     list: {
       width: '100%',
       padding: '1rem',
-      borderRadius: '10px',
+      borderRadius: '5px',
       backgroundColor: 'lightblue'
     }
   }));
