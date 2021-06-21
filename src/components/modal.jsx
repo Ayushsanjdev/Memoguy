@@ -1,25 +1,25 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import { useSpring, animated } from 'react-spring';
+import React from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import { useSpring, animated } from "react-spring";
 // import db from '../firebase/config';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: '10px',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: "10px",
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
-    borderRadius: '10px',
+    border: "2px solid #000",
+    borderRadius: "10px",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    fontFamily: 'sans-serif',
+    fontFamily: "sans-serif",
   },
 }));
 
@@ -54,7 +54,7 @@ Fade.propTypes = {
   onExited: PropTypes.func,
 };
 
-export default function SpringModal({setShowNotes, addData}) {
+export default function SpringModal({ setShowNotes, addData }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -67,15 +67,14 @@ export default function SpringModal({setShowNotes, addData}) {
   };
 
   const handleInput = (e) => {
-    if(e.key == 'Enter') {
+    if (e.key == "Enter") {
       setShowNotes(e.target.value);
       addData(e.target.value);
       handleClose();
     } else {
-      ''
+      ("");
     }
-    
-  }
+  };
 
   return (
     <div className="reactSpring">
@@ -98,9 +97,7 @@ export default function SpringModal({setShowNotes, addData}) {
           <div className={classes.paper}>
             <h2 id="spring-modal-title">Your memo title</h2>
             <label id="spring-modal-description">
-              <input 
-                type="text/number" 
-                onKeyPress={handleInput} />
+              <input type="text/number" onKeyPress={handleInput} />
             </label>
           </div>
         </Fade>
