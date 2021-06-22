@@ -8,7 +8,8 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 
 const App = () => {
-  const [showNotes, setShowNotes] = useState([]);
+  const [showTitle, setShowTitle] = useState([]);
+  const [allNotes, setAllNotes] = useState([]);
 
   useEffect(() => {
     getData();
@@ -20,7 +21,7 @@ const App = () => {
       .collection("notes")
       .orderBy("createdAt", "desc")
       .onSnapshot((querySnapshot) => {
-      setShowNotes(
+      setAllNotes(
         querySnapshot.docs.map((doc) => ({
           id: doc.id,
           title: doc.data().title,
@@ -36,7 +37,7 @@ const App = () => {
       .firestore()
       .collection("notes")
       .add({
-        title: showNotes,
+        title: showTitle,
         body: "body-pending",
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       })
@@ -54,9 +55,9 @@ const App = () => {
 
   return (
     <div className="App">
-      <Head setShowNotes={setShowNotes} addData={addData} />
+      <Head setShowTitle={setShowTitle} showTitle={showTitle} addData={addData} />
       <main>
-        <LeftSideBar showNotes={showNotes} />
+        <LeftSideBar showTitle={showTitle} allNotes={allNotes} />
         <RightSideBar />
       </main>
       <footer>
