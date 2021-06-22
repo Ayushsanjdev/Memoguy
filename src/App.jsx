@@ -8,7 +8,8 @@ import firebase from "firebase/app";
 import "firebase/firestore";
 
 const App = () => {
-  const [showTitle, setShowTitle] = useState([]);
+  const [showTitle, setShowTitle] = useState("");
+  const [showBody, setShowBody] = useState("");
   const [allNotes, setAllNotes] = useState([]);
 
   useEffect(() => {
@@ -21,14 +22,13 @@ const App = () => {
       .collection("notes")
       .orderBy("createdAt", "desc")
       .onSnapshot((querySnapshot) => {
-      setAllNotes(
-        querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          title: doc.data().title,
-          body: doc.data().body,
-        }))
-      )
-        
+        setAllNotes(
+          querySnapshot.docs.map((doc) => ({
+            id: doc.id,
+            title: doc.data().title,
+            body: doc.data().body,
+          }))
+        );
       });
   };
 
@@ -38,7 +38,7 @@ const App = () => {
       .collection("notes")
       .add({
         title: showTitle,
-        body: "body-pending",
+        body: showBody,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .then(() => {
@@ -49,20 +49,39 @@ const App = () => {
       });
   };
 
-  // const delData = () => {
-  //   db.collection("notes").doc(showNotes[0].id).delete();
-  // }
+  const delData = () => {
+    firebase
+      .firestore()
+      .collection("notes")
+      .doc(allNotes[0].id)
+      .delete()
+      .then(() => {
+        console.log("successfully deleted");
+      });
+  };
 
   return (
     <div className="App">
-      <Head setShowTitle={setShowTitle} showTitle={showTitle} addData={addData} />
+      <Head
+        setShowTitle={setShowTitle}
+        showTitle={showTitle}
+        addData={addData}
+      />
       <main>
-        <LeftSideBar showTitle={showTitle} allNotes={allNotes} />
-        <RightSideBar />
-      </main>
+        <LeftSideBar
+          showTitle={showTitle}
+          allNotes={allNotes}
+          delData={delData}
+        />
+        <RightSideBar
+          allNotes={allNotes}
+          setShowBody={setShowBody}
+          showBody={showBody}
+        />
+        </main>
       <footer>
-        Made with 🧠 by
-        <a href="https://github.com/ayushsanjdev"> ayushsanjdev</a>
+        Made with🧠 by
+        <a href="https://github.com/ayushsanjdev"> ayushsanjdev </a>{" "}
       </footer>
     </div>
   );

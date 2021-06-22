@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Pacifico&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Pacifico&display=swap");
 
 body {
   margin: 0;
@@ -6,26 +6,26 @@ body {
   box-sizing: border-box;
   max-width: 1220px;
   margin: 0 auto;
-  background-color: antiquewhite;
+  background-color: aliceblue;
 }
 
 *::-webkit-scrollbar {
-  width: 5px;               /* width of the entire scrollbar */
+  width: 5px; /* width of the entire scrollbar */
 }
 
 *::-webkit-scrollbar-track {
-  background: rgb(233, 224, 207);        /* color of the tracking area */
+  background: aliceblue; /* color of the tracking area */
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: rgb(93, 188, 201);    /* color of the scroll thumb */
+  background-color: rgb(93, 188, 201); /* color of the scroll thumb */
   border-radius: 20px;
-  border: 1px groove lightblue;       /* roundness of the scroll thumb */ /* creates padding around scroll thumb */
+  border: 1px groove lightblue; /* roundness of the scroll thumb */ /* creates padding around scroll thumb */
 }
 
 .App {
   width: 95%;
-  height: 105vh;
+  height: 102vh;
   margin: 0 auto;
 }
 
@@ -62,26 +62,34 @@ h1 {
 
 main {
   display: flex;
-  background-color: aliceblue;
+  height: 450px;
   border-radius: 10px;
-  border: none;
+  /* background-color: rgb(245, 245, 245); */
 }
 
+.leftsidebar {
+  width: 250px;
+  height: 100%;
+  overflow: scroll;
+}
 
+.leftsidebar .list {
+  border: 1px groove rgb(102, 209, 245);
+  border-radius: 5px;
+}
 
 .editor {
   width: 100%;
-  height: 100%; 
+  height: 100%;
+  background-color: #fff;
 }
 
 .reactQuill {
-  height: 410px;
-  
-}
+  height: 400px;
+} 
 
 .open {
   display: flex;
-  
 }
 
 small {
@@ -94,10 +102,7 @@ small {
 
 .deleteIcon:hover {
   color: red;
-}
-
-.listClick {
-  background-color: aquamarine;
+  border: outset;
 }
 
 a {
@@ -106,7 +111,7 @@ a {
 }
 
 footer {
-  background-color: rgba(51, 51, 51, 0.26);
+  background-color: rgba(105, 105, 105, 0.26);
   color: #fff;
   font-family: Open sans;
   font-size: smaller;

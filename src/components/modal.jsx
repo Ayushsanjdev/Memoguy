@@ -54,7 +54,7 @@ Fade.propTypes = {
   onExited: PropTypes.func,
 };
 
-export default function SpringModal({ setShowTitle, showTitle, addData }) {
+export default function SpringModal({ setShowTitle, addData }) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -68,8 +68,7 @@ export default function SpringModal({ setShowTitle, showTitle, addData }) {
 
   const handleInput = (e) => {
     if (e.key == "Enter") {
-      setShowTitle(e.target.value);
-      addData(showTitle);
+      addData();
       handleClose();
     } else {
       ("");
@@ -97,7 +96,7 @@ export default function SpringModal({ setShowTitle, showTitle, addData }) {
           <div className={classes.paper}>
             <h2 id="spring-modal-title">Your memo title</h2>
             <label id="spring-modal-description">
-              <input type="text/number" onKeyPress={handleInput} />
+              <input type="text/number" onChange={(e) => setShowTitle(e.target.value)} onKeyPress={handleInput} />
             </label>
           </div>
         </Fade>

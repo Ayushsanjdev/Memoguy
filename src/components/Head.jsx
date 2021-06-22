@@ -8,7 +8,11 @@ const Head = ({ setShowTitle, showTitle, addData }) => {
         <h1>Memoguy </h1>
         <small> open</small>
       </div>
-      <SpringModal setShowTitle={setShowTitle} showTitle={showTitle} addData={addData} />
+      <SpringModal
+        setShowTitle={setShowTitle}
+        showTitle={showTitle}
+        addData={addData}
+      />
     </header>
   );
 };
