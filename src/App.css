@@ -71,11 +71,19 @@ main {
   width: 250px;
   height: 100%;
   overflow: scroll;
+  background-color: #fff;
 }
 
 .leftsidebar .list {
-  border: 1px groove rgb(102, 209, 245);
   border-radius: 5px;
+}
+
+.leftsidebar .list:focus {
+  background-color: rgb(189, 218, 228);
+}
+
+.leftsidebar .list:hover {
+  background-color: rgb(198, 222, 230);
 }
 
 .editor {
@@ -104,6 +112,7 @@ small {
   color: red;
   border: outset;
 }
+
 
 a {
   color: rgb(255, 0, 55);
