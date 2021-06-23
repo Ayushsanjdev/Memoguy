@@ -6,7 +6,7 @@ body {
   box-sizing: border-box;
   max-width: 1220px;
   margin: 0 auto;
-  background-color: aliceblue;
+  background: linear-gradient(#dddfd4,#fae596, #3fb0ac );
 }
 
 *::-webkit-scrollbar {
@@ -25,11 +25,13 @@ body {
 
 .App {
   width: 95%;
-  height: 102vh;
+  height: 101vh;
   margin: 0 auto;
 }
 
 header {
+  margin: 0;
+  padding: 0;
   font-family: Pacifico;
   display: flex;
   justify-content: space-between;
@@ -50,21 +52,21 @@ h1 {
   font-weight: bold;
   border: transparent;
   border-radius: 5px;
-  background-color: dodgerblue;
+  background-color: #3fb0ac;
   color: white;
   cursor: pointer;
+  border: outset;
 }
 
-.newnote:hover {
-  background-color: chocolate;
-  transition: all 500ms;
+.reactSpring .newnote:focus {
+  border: inset;
+  background-color: #333;
 }
 
 main {
   display: flex;
   height: 450px;
   border-radius: 10px;
-  /* background-color: rgb(245, 245, 245); */
 }
 
 .leftsidebar {
@@ -72,18 +74,14 @@ main {
   height: 100%;
   overflow: scroll;
   background-color: #fff;
+  border: 2px groove #dddfd4;
+  border-radius: 10px;
 }
 
 .leftsidebar .list {
+  height: 54px;
   border-radius: 5px;
-}
-
-.leftsidebar .list:focus {
-  background-color: rgb(189, 218, 228);
-}
-
-.leftsidebar .list:hover {
-  background-color: rgb(198, 222, 230);
+  border: outset;
 }
 
 .editor {
@@ -93,8 +91,16 @@ main {
 }
 
 .reactQuill {
-  height: 400px;
+  height: 374px;
 } 
+
+.quillTitle {
+  text-align: center;
+  padding: 0.5rem;
+  background-color: rgb(189, 218, 228);
+  font-family: sans-serif;
+  font-weight: 600;
+}
 
 .open {
   display: flex;
@@ -110,7 +116,6 @@ small {
 
 .deleteIcon:hover {
   color: red;
-  border: outset;
 }
 
 
