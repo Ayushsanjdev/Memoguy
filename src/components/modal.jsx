@@ -78,7 +78,7 @@ export default function SpringModal({ setShowTitle, addData }) {
   return (
     <div className="reactSpring">
       <button type="button" className="newnote" onClick={handleOpen}>
-        New Note
+        New Title
       </button>
       <Modal
         aria-labelledby="spring-modal-title"
