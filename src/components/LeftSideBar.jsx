@@ -1,27 +1,28 @@
-import React, {useState} from "react";
-import { Divider } from "@material-ui/core";
+import React from "react";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import DeleteIcon from "@material-ui/icons/Delete";
 
-const LeftSideBar = ({ allNotes, delData }) => {
-
-  const [selectedIndex, setSelectedIndex] = useState(1);
+const LeftSideBar = ({ allNotes, delData, setSelectedNote, selectedNote }) => {
 
   const handleListItemClick = (event, index) => {
-    setSelectedIndex(index);
+    setSelectedNote(index);
+  }
+
+  const handleDelete = () => {
+    let confirmation = confirm("Are you sure you want to delete ?");
+    confirmation === true ? delData() : ''
   }
 
   return(
     <div className="leftsidebar">
-    {allNotes.map((title) => (
-      <section key={title.id}>
-      <ListItem button className="list" selected={selectedIndex === title.id}
-          onClick={(event) => handleListItemClick(event, title.id)}>
-        <ListItemText primary={title.title} />
-        <DeleteIcon className="deleteIcon" onClick={delData} />
+    {allNotes.map((notes) => (
+      <section key={notes.id}>
+      <ListItem button className="list" selected={selectedNote === notes.id}
+          onClick={(event) => handleListItemClick(event, notes.id)}>
+        <ListItemText primary={notes.title} />
+        <DeleteIcon className="deleteIcon" onClick={handleDelete} />
       </ListItem>
-      <Divider></Divider>
       </section>
     ))}
     </div>
