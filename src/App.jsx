@@ -11,10 +11,18 @@ const App = () => {
   const [showTitle, setShowTitle] = useState("");
   const [showBody, setShowBody] = useState("");
   const [allNotes, setAllNotes] = useState([]);
+  const [selectedNote, setSelectedNote] = useState(null);
 
   useEffect(() => {
     getData();
   }, []);
+
+  const updateData = () => {
+    firebase.firestore().collection("notes").doc().update({
+      title: doc.data().title,
+      body: doc.data().body,
+    })
+  }
 
   const getData = () => {
     firebase
@@ -53,7 +61,7 @@ const App = () => {
     firebase
       .firestore()
       .collection("notes")
-      .doc(allNotes[0].id)
+      .doc(selectedNote)
       .delete()
       .then(() => {
         console.log("successfully deleted");
@@ -72,12 +80,21 @@ const App = () => {
           showTitle={showTitle}
           allNotes={allNotes}
           delData={delData}
+          selectedNote={selectedNote}
+          setSelectedNote={setSelectedNote}
         />
+        {selectedNote ?
         <RightSideBar
           allNotes={allNotes}
           setShowBody={setShowBody}
           showBody={showBody}
-        />
+          selectedNote={selectedNote}
+          setSelectedNote={setSelectedNote}
+        /> : 
+        <p 
+          style={{margin: '0 auto', fontFamily: 'Open Sans', alignSelf: 'center', fontSize: '1.5rem', opacity: '0.7'}}>
+          Click on any Title or add <br/> new title to see Editor
+        </p>}
         </main>
       <footer>
         Made with🧠 by
