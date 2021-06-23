@@ -11,7 +11,7 @@ const LeftSideBar = ({ allNotes, delData, setSelectedNote, selectedNote }) => {
 
   const handleDelete = () => {
     let confirmation = confirm("Are you sure you want to delete ?");
-    confirmation === true ? delData() : ''
+    confirmation === true ? delData() : '' ;
   }
 
   return(
@@ -20,7 +20,7 @@ const LeftSideBar = ({ allNotes, delData, setSelectedNote, selectedNote }) => {
       <section key={notes.id}>
       <ListItem button className="list" selected={selectedNote === notes.id}
           onClick={(event) => handleListItemClick(event, notes.id)}>
-        <ListItemText primary={notes.title} />
+        <ListItemText primary={notes.title}/>
         <DeleteIcon className="deleteIcon" onClick={handleDelete} />
       </ListItem>
       </section>
