@@ -61,7 +61,7 @@ const App = () => {
     firebase
       .firestore()
       .collection("notes")
-      .doc(selectedNote)
+      .doc()
       .delete()
       .then(() => {
         console.log("successfully deleted");
