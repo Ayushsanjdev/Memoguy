@@ -1,3 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Pacifico&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 1220px;
+  margin: 0 auto;
+  background: linear-gradient(#dddfd4,#fae596, #3fb0ac );
+}
+
+*::-webkit-scrollbar {
+  width: 5px; /* width of the entire scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+  background: aliceblue; /* color of the tracking area */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(93, 188, 201); /* color of the scroll thumb */
+  border-radius: 20px;
+  border: 1px groove lightblue; /* roundness of the scroll thumb */ /* creates padding around scroll thumb */
+}
+
 .App {
+  width: 95%;
+  height: 101vh;
+  margin: 0 auto;
+}
+
+header {
+  margin: 0;
+  padding: 0;
+  font-family: Pacifico;
+  display: flex;
+  justify-content: space-between;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+.reactSpring {
+  align-self: center;
+}
+
+.reactSpring .newnote {
+  font-family: Open sans;
+  padding: 0.8rem 1rem;
+  font-size: 16px;
+  font-weight: bold;
+  border: transparent;
+  border-radius: 5px;
+  background-color: #3fb0ac;
+  color: white;
+  cursor: pointer;
+  border: outset;
+}
+
+.reactSpring .newnote:focus {
+  border: inset;
+  background-color: #333;
+}
+
+main {
+  display: flex;
+  height: 450px;
+  border-radius: 10px;
+}
+
+.leftsidebar {
+  width: 250px;
+  height: 100%;
+  overflow: scroll;
+  background-color: #fff;
+  border: 2px groove #dddfd4;
+  border-radius: 10px;
+}
+
+.leftsidebar .list {
+  height: 54px;
+  border-radius: 5px;
+  border: outset;
+}
+
+.editor {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+
+.reactQuill {
+  height: 374px;
+} 
+
+.quillTitle {
   text-align: center;
+  padding: 0.5rem;
+  background-color: rgb(189, 218, 228);
+  font-family: sans-serif;
+  font-weight: 600;
+}
+
+.open {
+  display: flex;
+}
+
+small {
+  padding: 5px;
+  margin-top: 35px;
+  font-family: Open sans;
+  align-self: center;
+  color: rgb(255, 75, 9);
+}
+
+.deleteIcon:hover {
+  color: red;
+}
+
+
+a {
+  color: rgb(255, 0, 55);
+  text-decoration: none;
+}
+
+footer {
+  background-color: rgba(105, 105, 105, 0.26);
+  color: #fff;
+  font-family: Open sans;
+  font-size: smaller;
+  padding: 0.3rem 0;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
