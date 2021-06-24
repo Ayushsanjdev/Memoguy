@@ -12,6 +12,7 @@ const App = () => {
   const [showBody, setShowBody] = useState("");
   const [allNotes, setAllNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState(null);
+  const [selectedNoteIndex, setSelectedNoteIndex] = useState(null);
 
   useEffect(() => {
     getData();
@@ -21,8 +22,8 @@ const App = () => {
     firebase.firestore().collection("notes").doc().update({
       title: doc.data().title,
       body: doc.data().body,
-    })
-  }
+    });
+  };
 
   const getData = () => {
     firebase
@@ -40,31 +41,46 @@ const App = () => {
       });
   };
 
+  // useEffect(() => {
+  //   filterNotes()
+  // }, [selectedNote])
+
+  // const filterNotes = () => {
+  //   setSelectedNoteIndex (
+  //     allNotes.filter((note) =>
+  //     note.title === selectedNote
+  //   ))
+  // }
+
   const addData = () => {
-    firebase
-      .firestore()
-      .collection("notes")
-      .add({
-        title: showTitle,
-        body: showBody,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      })
-      .then(() => {
-        console.log("doc successfully written!");
-      })
-      .catch((error) => {
-        console.error("error: ", error);
-      });
+    showTitle === ""
+      ? alert("Title is empty!")
+      : firebase
+          .firestore()
+          .collection("notes")
+          .add({
+            title: showTitle,
+            body: showBody,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          })
+          .then(() => {
+            console.log("doc successfully written!");
+            setShowTitle("");
+          })
+          .catch((error) => {
+            console.error("error: ", error);
+          });
   };
 
   const delData = () => {
     firebase
       .firestore()
       .collection("notes")
-      .doc()
+      .doc(selectedNote)
       .delete()
       .then(() => {
         console.log("successfully deleted");
+        setSelectedNote(null);
       });
   };
 
@@ -83,19 +99,29 @@ const App = () => {
           selectedNote={selectedNote}
           setSelectedNote={setSelectedNote}
         />
-        {selectedNote ?
-        <RightSideBar
-          allNotes={allNotes}
-          setShowBody={setShowBody}
-          showBody={showBody}
-          selectedNote={selectedNote}
-          setSelectedNote={setSelectedNote}
-        /> : 
-        <p 
-          style={{margin: '0 auto', fontFamily: 'Open Sans', alignSelf: 'center', fontSize: '1.5rem', opacity: '0.7'}}>
-          Click on any Title or add <br/> new title to see Editor
-        </p>}
-        </main>
+
+        {selectedNote ? (
+          <RightSideBar
+            allNotes={allNotes}
+            setShowBody={setShowBody}
+            showBody={showBody}
+            selectedNote={selectedNote}
+            setSelectedNote={setSelectedNote}
+          />
+        ) : (
+          <p
+            style={{
+              margin: "0 auto",
+              fontFamily: "Open Sans",
+              alignSelf: "center",
+              fontSize: "1.5rem",
+              opacity: "0.7",
+            }}
+          >
+            Click on any Title or add <br /> new title to see Editor
+          </p>
+        )}
+      </main>
       <footer>
         Made with🧠 by
         <a href="https://github.com/ayushsanjdev"> ayushsanjdev </a>{" "}

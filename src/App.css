@@ -5,7 +5,9 @@ body {
   padding: 0;
   box-sizing: border-box;
   max-width: 1220px;
+  min-height: 100vh;
   margin: 0 auto;
+  scroll-behavior: smooth;
   background: linear-gradient(#dddfd4,#fae596, #3fb0ac );
 }
 
@@ -25,7 +27,6 @@ body {
 
 .App {
   width: 95%;
-  height: 101vh;
   margin: 0 auto;
 }
 
