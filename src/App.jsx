@@ -13,10 +13,15 @@ const App = () => {
   const [allNotes, setAllNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState(null);
   const [selectedNoteIndex, setSelectedNoteIndex] = useState(null);
+  const [selectedNoteBody, setSelectedNoteBody] = useState(null);
 
   useEffect(() => {
     getData();
   }, []);
+
+  useEffect( async () => {
+    updateData();
+  }, [showTitle, showBody])
 
   const updateData = () => {
     firebase.firestore().collection("notes").doc(selectedNoteIndex).update({
@@ -24,10 +29,6 @@ const App = () => {
       body: showBody,
     });
   };
-
-  useEffect(async () => {
-    await updateData();
-  }, [showTitle, showBody])
 
   const getData = () => {
     firebase
@@ -93,6 +94,8 @@ const App = () => {
           setSelectedNoteIndex={setSelectedNoteIndex}
           selectedNote={selectedNote}
           setSelectedNote={setSelectedNote}
+          selectedNoteBody={selectedNoteBody}
+          setSelectedNoteBody={setSelectedNoteBody}
         />
 
         {selectedNote ? (
@@ -105,6 +108,7 @@ const App = () => {
             selectedNote={selectedNote}
             setSelectedNote={setSelectedNote}
             updateData={updateData}
+            selectedNoteBody={selectedNoteBody}
           />
         ) : (
           <p
