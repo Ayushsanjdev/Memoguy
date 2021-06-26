@@ -19,11 +19,15 @@ const App = () => {
   }, []);
 
   const updateData = () => {
-    firebase.firestore().collection("notes").doc().update({
-      title: doc.data().title,
-      body: doc.data().body,
+    firebase.firestore().collection("notes").doc(selectedNoteIndex).update({
+      title: showTitle,
+      body: showBody,
     });
   };
+
+  useEffect(() => {
+    updateData();
+  }, [showTitle, showBody])
 
   const getData = () => {
     firebase
@@ -40,17 +44,6 @@ const App = () => {
         );
       });
   };
-
-  // useEffect(() => {
-  //   filterNotes()
-  // }, [selectedNote])
-
-  // const filterNotes = () => {
-  //   setSelectedNoteIndex (
-  //     allNotes.filter((note) =>
-  //     note.title === selectedNote
-  //   ))
-  // }
 
   const addData = () => {
     showTitle === ""
@@ -76,7 +69,7 @@ const App = () => {
     firebase
       .firestore()
       .collection("notes")
-      .doc(selectedNote)
+      .doc(selectedNoteIndex)
       .delete()
       .then(() => {
         console.log("successfully deleted");
@@ -96,6 +89,8 @@ const App = () => {
           showTitle={showTitle}
           allNotes={allNotes}
           delData={delData}
+          selectedNoteIndex={selectedNoteIndex}
+          setSelectedNoteIndex={setSelectedNoteIndex}
           selectedNote={selectedNote}
           setSelectedNote={setSelectedNote}
         />
@@ -105,8 +100,10 @@ const App = () => {
             allNotes={allNotes}
             setShowBody={setShowBody}
             showBody={showBody}
+            setShowTitle={setShowTitle}
             selectedNote={selectedNote}
             setSelectedNote={setSelectedNote}
+            updateData={updateData}
           />
         ) : (
           <p
