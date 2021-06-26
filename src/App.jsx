@@ -25,8 +25,8 @@ const App = () => {
     });
   };
 
-  useEffect(() => {
-    updateData();
+  useEffect(async () => {
+    await updateData();
   }, [showTitle, showBody])
 
   const getData = () => {
@@ -101,6 +101,7 @@ const App = () => {
             setShowBody={setShowBody}
             showBody={showBody}
             setShowTitle={setShowTitle}
+            showTitle={showTitle}
             selectedNote={selectedNote}
             setSelectedNote={setSelectedNote}
             updateData={updateData}
