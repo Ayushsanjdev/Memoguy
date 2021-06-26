@@ -8,6 +8,7 @@ const RightSideBar = ({
   allNotes,
   selectedNote,
   updateData,
+  showTitle
 }) => {
   // const addBody = async (val) => {
   //   await setShowBody(val);
@@ -18,14 +19,11 @@ const RightSideBar = ({
     setShowTitle(e.target.value);
   };
 
+  
+
   return (
     <div className="editor">
-        <input
-          id="title"
-          placeholder="title"
-          className="quillTitle"
-          onChange={updateTitle}
-        />
+      <div className="quillTitle" contentEditable="true" onChange={updateTitle} >{selectedNote}</div>
       <ReactQuill theme="snow" className="reactQuill"></ReactQuill>
     </div>
   );
