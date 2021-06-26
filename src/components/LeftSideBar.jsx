@@ -3,15 +3,14 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import DeleteIcon from "@material-ui/icons/Delete";
 
-const LeftSideBar = ({ allNotes, delData, setSelectedNote, selectedNote }) => {
-  const handleListItemClick = (event, index) => {
-    setSelectedNote(index);
+const LeftSideBar = ({ allNotes, delData, setSelectedNote, selectedNote, selectedNoteIndex, setSelectedNoteIndex }) => {
+  const handleListItemClick = (event, title) => {
+    setSelectedNote(title);
   };
 
-  // const handleDelete = () => {
-  //   let confirmation = confirm("Are you sure you want to delete ?");
-  //   confirmation === true ? handleListItemClick() || delData() : "";
-  // };
+  const handleIndex = (event, id) => {
+    setSelectedNoteIndex(id);
+  }
 
   return (
     <div className="leftsidebar">
@@ -20,8 +19,8 @@ const LeftSideBar = ({ allNotes, delData, setSelectedNote, selectedNote }) => {
           <ListItem
             button
             className="list"
-            selected={selectedNote === notes.title}
-            onClick={(event) => handleListItemClick(event, notes.id)}
+            selected={selectedNote === notes.title || selectedNoteIndex === notes.id}
+            onClick={(event) => handleListItemClick(event, notes.title) || handleIndex(event, notes.id)}
           >
             <ListItemText primary={notes.title} />
             <DeleteIcon className="deleteIcon" onClick={delData} />
