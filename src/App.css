@@ -101,6 +101,8 @@ main {
   background-color: rgb(189, 218, 228);
   font-family: sans-serif;
   font-weight: 600;
+  border: none;
+  margin: 0 auto;
 }
 
 .open {

@@ -13,15 +13,20 @@ const App = () => {
   const [allNotes, setAllNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState(null);
   const [selectedNoteIndex, setSelectedNoteIndex] = useState(null);
+  const [selectedNoteBody, setSelectedNoteBody] = useState(null);
 
   useEffect(() => {
     getData();
   }, []);
 
+  useEffect( async () => {
+    updateData();
+  }, [showTitle, showBody])
+
   const updateData = () => {
-    firebase.firestore().collection("notes").doc().update({
-      title: doc.data().title,
-      body: doc.data().body,
+    firebase.firestore().collection("notes").doc(selectedNoteIndex).update({
+      title: showTitle,
+      body: showBody,
     });
   };
 
@@ -40,17 +45,6 @@ const App = () => {
         );
       });
   };
-
-  // useEffect(() => {
-  //   filterNotes()
-  // }, [selectedNote])
-
-  // const filterNotes = () => {
-  //   setSelectedNoteIndex (
-  //     allNotes.filter((note) =>
-  //     note.title === selectedNote
-  //   ))
-  // }
 
   const addData = () => {
     showTitle === ""
@@ -76,7 +70,7 @@ const App = () => {
     firebase
       .firestore()
       .collection("notes")
-      .doc(selectedNote)
+      .doc(selectedNoteIndex)
       .delete()
       .then(() => {
         console.log("successfully deleted");
@@ -96,8 +90,12 @@ const App = () => {
           showTitle={showTitle}
           allNotes={allNotes}
           delData={delData}
+          selectedNoteIndex={selectedNoteIndex}
+          setSelectedNoteIndex={setSelectedNoteIndex}
           selectedNote={selectedNote}
           setSelectedNote={setSelectedNote}
+          selectedNoteBody={selectedNoteBody}
+          setSelectedNoteBody={setSelectedNoteBody}
         />
 
         {selectedNote ? (
@@ -105,8 +103,12 @@ const App = () => {
             allNotes={allNotes}
             setShowBody={setShowBody}
             showBody={showBody}
+            setShowTitle={setShowTitle}
+            showTitle={showTitle}
             selectedNote={selectedNote}
             setSelectedNote={setSelectedNote}
+            updateData={updateData}
+            selectedNoteBody={selectedNoteBody}
           />
         ) : (
           <p

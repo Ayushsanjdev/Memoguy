@@ -70,6 +70,7 @@ export default function SpringModal({ setShowTitle, addData }) {
     if (e.key == "Enter") {
       addData();
       handleClose();
+
     } else {
       ("");
     }
