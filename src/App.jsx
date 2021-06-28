@@ -19,12 +19,16 @@ const App = () => {
     getData();
   }, []);
 
-  useEffect( async () => {
-    updateData();
-  }, [showTitle, showBody])
+  // useEffect(async () => {
+  //   updateData();
+  // }, [showTitle, showBody])
 
   const updateData = () => {
-    firebase.firestore().collection("notes").doc(selectedNoteIndex).update({
+    firebase
+      .firestore()
+      .collection("notes")
+      .doc(selectedNoteIndex)
+      n.update({
       title: showTitle,
       body: showBody,
     });
@@ -50,20 +54,24 @@ const App = () => {
     showTitle === ""
       ? alert("Title is empty!")
       : firebase
-          .firestore()
-          .collection("notes")
-          .add({
-            title: showTitle,
-            body: showBody,
-            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-          })
-          .then(() => {
-            console.log("doc successfully written!");
-            setShowTitle("");
-          })
-          .catch((error) => {
-            console.error("error: ", error);
-          });
+        .firestore()
+        .collection("notes")
+        .add({
+          title: showTitle,
+          body: showBody,
+          createdAt: firebase
+            .firestore
+            .FieldValue
+          
+            .serverTimestamp(),
+        })
+        .then(() => {
+          console.log("doc successfully written!");
+          setShowTitle("");
+        })
+        .catch((error) => {
+          console.error("error: ", error);
+        });
   };
 
   const delData = () => {
