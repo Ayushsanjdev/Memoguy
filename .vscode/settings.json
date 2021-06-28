@@ -1,5 +1,4 @@
 {
   "editor.tabSize": 2,
-  "editor.fontFamily": "'consolas','canterall regular', monospace, 'Droid Sans Fallback'",
-  "editor.fontSize": 13
+  "editor.fontFamily": "'canterall regular', monospace, 'Droid Sans Fallback'"
 }

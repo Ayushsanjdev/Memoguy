@@ -11,9 +11,8 @@ const LeftSideBar = ({
   selectedNoteIndex,
   setSelectedNoteIndex,
   selectedNoteBody,
-  setSelectedNoteBody
+  setSelectedNoteBody,
 }) => {
-
   const handleListItemClick = (event, title) => {
     setSelectedNote(title);
   };
@@ -24,7 +23,7 @@ const LeftSideBar = ({
 
   const handleBody = (event, body) => {
     setSelectedNoteBody(body);
-  }
+  };
 
   return (
     <div className="leftsidebar">
@@ -34,15 +33,16 @@ const LeftSideBar = ({
             button
             className="list"
             selected={
-              selectedNote === notes.title ||  selectedNoteIndex === notes.id || selectedNoteBody === notes.body
+              selectedNote === notes.title ||
+              selectedNoteIndex === notes.id ||
+              selectedNoteBody === notes.body
             }
-            onClick={
-              function (event) {
-                handleListItemClick(event, notes.title)
-                handleIndex(event, notes.id)
-                handleBody(event, notes.body)
-            } 
-            } >
+            onClick={function (event) {
+              handleListItemClick(event, notes.title);
+              handleIndex(event, notes.id);
+              handleBody(event, notes.body);
+            }}
+          >
             <ListItemText primary={notes.title} />
             <DeleteIcon className="deleteIcon" onClick={delData} />
           </ListItem>
