@@ -37,14 +37,15 @@ const LeftSideBar = ({
               selectedNoteIndex === notes.id ||
               selectedNoteBody === notes.body
             }
-            onClick={function (event) {
+            onClick={(event) => {
               handleListItemClick(event, notes.title);
               handleIndex(event, notes.id);
               handleBody(event, notes.body);
             }}
           >
             <ListItemText primary={notes.title} />
-            <DeleteIcon className="deleteIcon" onClick={delData} />
+            <DeleteIcon className="deleteIcon" 
+              onClick={delData} />
           </ListItem>
         </section>
       ))}
