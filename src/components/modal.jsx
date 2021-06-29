@@ -97,7 +97,10 @@ export default function SpringModal({ setShowTitle, addData }) {
           <div className={classes.paper}>
             <h2 id="spring-modal-title">Your memo title</h2>
             <label id="spring-modal-description">
-              <input type="text/number" onChange={(e) => setShowTitle(e.target.value)} onKeyPress={handleInput} />
+              <input 
+                type="text/number" 
+                onChange={(e) => setShowTitle(e.target.value)} 
+                onKeyPress={handleInput} />
             </label>
           </div>
         </Fade>

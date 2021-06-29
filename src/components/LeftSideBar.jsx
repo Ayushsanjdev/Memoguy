@@ -13,6 +13,7 @@ const LeftSideBar = ({
   selectedNoteBody,
   setSelectedNoteBody,
 }) => {
+  
   const handleListItemClick = (event, title) => {
     setSelectedNote(title);
   };

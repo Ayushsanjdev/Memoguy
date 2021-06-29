@@ -6,6 +6,7 @@ import RightSideBar from "./components/RightSideBar";
 import "./firebase/config";
 import firebase from "firebase/app";
 import "firebase/firestore";
+import { EditorState } from "draft-js";
 
 const App = () => {
   const [showTitle, setShowTitle] = useState("");
@@ -13,7 +14,7 @@ const App = () => {
   const [allNotes, setAllNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState(null);
   const [selectedNoteIndex, setSelectedNoteIndex] = useState(null);
-  const [selectedNoteBody, setSelectedNoteBody] = useState(null);
+  const [selectedNoteBody, setSelectedNoteBody] = useState(EditorState.createEmpty());
 
   useEffect(() => {
     getData();
@@ -117,6 +118,7 @@ const App = () => {
             setSelectedNote={setSelectedNote}
             updateData={updateData}
             selectedNoteBody={selectedNoteBody}
+            setSelectedNoteBody={setSelectedNoteBody}
           />
         ) : (
           <p
