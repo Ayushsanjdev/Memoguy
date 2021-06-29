@@ -13,8 +13,10 @@ const App = () => {
   const [showBody, setShowBody] = useState("");
   const [allNotes, setAllNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState(null);
-  const [selectedNoteIndex, setSelectedNoteIndex] = useState(null);
-  const [selectedNoteBody, setSelectedNoteBody] = useState(EditorState.createEmpty());
+  const [selectedNoteIndex, setSelectedNoteIndex] = 
+    useState(null);
+  const [selectedNoteBody, setSelectedNoteBody] = 
+    useState(EditorState.createEmpty());
 
   useEffect(() => {
     getData();
@@ -130,13 +132,15 @@ const App = () => {
               opacity: "0.7",
             }}
           >
-            Click on any Title or add <br /> new title to see Editor
+            Click on any Title or add <br /> 
+              new title to see Editor
           </p>
         )}
       </main>
       <footer>
         Made with🧠 by
-        <a href="https://github.com/ayushsanjdev"> ayushsanjdev </a>{" "}
+        <a href="https://github.com/ayushsanjdev"> 
+          ayushsanjdev </a>{" "}
       </footer>
     </div>
   );

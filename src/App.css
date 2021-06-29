@@ -12,17 +12,17 @@ body {
 }
 
 *::-webkit-scrollbar {
-  width: 5px; /* width of the entire scrollbar */
+  width: 5px;
 }
 
 *::-webkit-scrollbar-track {
-  background: aliceblue; /* color of the tracking area */
+  background: aliceblue; 
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: rgb(93, 188, 201); /* color of the scroll thumb */
+  background-color: rgb(93, 188, 201);
   border-radius: 20px;
-  border: 1px groove lightblue; /* roundness of the scroll thumb */ /* creates padding around scroll thumb */
+  border: 1px groove lightblue;
 }
 
 .App {

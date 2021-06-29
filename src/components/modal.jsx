@@ -24,7 +24,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Fade = React.forwardRef(function Fade(props, ref) {
-  const { in: open, children, onEnter, onExited, ...other } = props;
+  const { in: open, children, onEnter, onExited, ...other } 
+    = props;
   const style = useSpring({
     from: { opacity: 0 },
     to: { opacity: open ? 1 : 0 },
@@ -78,7 +79,8 @@ export default function SpringModal({ setShowTitle, addData }) {
 
   return (
     <div className="reactSpring">
-      <button type="button" className="newnote" onClick={handleOpen}>
+      <button type="button" className="newnote" 
+        onClick={handleOpen}>
         New Title
       </button>
       <Modal

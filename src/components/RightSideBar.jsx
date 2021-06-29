@@ -1,7 +1,6 @@
 import React from "react";
 import { Editor, RichUtils } from "draft-js";
 
-
 const RightSideBar = ({
   setShowBody,
   showBody,
@@ -23,7 +22,7 @@ const RightSideBar = ({
     setSelectedNoteBody({selectedNoteBody});
   }
 
-  const toggleInlineStyles = (e) => {
+  const toggleInlineStyle = (e) => {
     e.preventDefault();
     let style = e.currentTarget.getAttribute('data-style');
     setSelectedNoteBody(RichUtils.toggleInlineStyle(
