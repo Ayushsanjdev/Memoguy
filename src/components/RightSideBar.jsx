@@ -1,5 +1,5 @@
-import React from "react";
-import { Editor, RichUtils } from "draft-js";
+import React, { useState } from "react";
+import { Editor, EditorState, RichUtils } from "draft-js";
 
 const RightSideBar = ({
   setShowBody,
@@ -13,6 +13,8 @@ const RightSideBar = ({
   updateData,
   showTitle,
 }) => {
+
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   const updateTitle = (e) => {
     setSelectedNote(e.target.value);
@@ -38,7 +40,7 @@ const RightSideBar = ({
 
         <input
           type="button"
-          value="Bold"
+          value="Bold" 
           data-style="BOLD"
           onMouseDown={toggleInlineStyle}
         />
@@ -52,7 +54,7 @@ const RightSideBar = ({
 
       <div className="draft-editor-wrapper">
         <Editor 
-          editorState={selectedNoteBody} 
+          editorState={editorState} 
           onChange={updateBody} /> 
       </div>
 
