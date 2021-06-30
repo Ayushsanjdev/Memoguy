@@ -15,7 +15,8 @@ const App = () => {
   const [selectedNote, setSelectedNote] = useState(null);
   const [selectedNoteIndex, setSelectedNoteIndex] = 
     useState(null);
-  const [selectedNoteBody, setSelectedNoteBody] = useState(null);
+  const [selectedNoteBody, setSelectedNoteBody]
+   = useState(null);
 
   useEffect(() => {
     getData();

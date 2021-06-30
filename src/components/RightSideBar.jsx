@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Editor, EditorState, RichUtils } from "draft-js";
+import { Editor, EditorState, ContentState, RichUtils }
+ from "draft-js";
+import "draft-js/dist/Draft.css";
 
 const RightSideBar = ({
   setShowBody,
@@ -14,22 +16,23 @@ const RightSideBar = ({
   showTitle,
 }) => {
 
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  const [editorState, setEditorState] = useState
+    (() => EditorState.createEmpty());
 
   const updateTitle = (e) => {
     setSelectedNote(e.target.value);
   };
 
-  const updateBody = (selectedNoteBody) => {
-    setSelectedNoteBody({selectedNoteBody});
-  }
+  const handleKeyCommand = (command, editorState) => {
+    const newState = 
+      RichUtils.handleKeyCommand(editorState, command);
 
-  const toggleInlineStyle = (e) => {
-    e.preventDefault();
-    let style = e.currentTarget.getAttribute('data-style');
-    setSelectedNoteBody(RichUtils.toggleInlineStyle(
-      selectedNoteBody, style
-    ));
+    if (newState) {
+      onChange(newState);
+      return 'handled';
+    }
+
+    return 'not-handled';
   }
 
   return (
@@ -54,8 +57,9 @@ const RightSideBar = ({
 
       <div className="draft-editor-wrapper">
         <Editor 
+          className="draft"
           editorState={editorState} 
-          onChange={updateBody} /> 
+          onChange={setEditorState} /> 
       </div>
 
     </div>

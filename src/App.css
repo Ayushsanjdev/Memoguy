@@ -85,15 +85,6 @@ main {
   border: outset;
 }
 
-.my-little-app {
-  width: 500px;
-  margin: 50px auto;
-}
-
-.draft-editor-wrapper {
-  border: 1px solid #ccc;
-}
-
 
 .editor {
   width: 100%;
@@ -101,7 +92,7 @@ main {
   background-color: #fff;
 }
 
-.reactQuill {
+.draft-editor-wrapper {
   height: 374px;
 } 
 
