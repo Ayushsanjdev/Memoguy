@@ -22,34 +22,29 @@ const RightSideBar = ({
   showTitle,
 }) => {
 
-  // const [editorState, setEditorState] = useState
-  //   (() => EditorState.createEmpty());
+  const [editorState, setEditorState] = useState
+    (
+      selectedNoteBody === null ? 
+      EditorState.createWithContent(convertFromRaw(JSON.parse(selectedNoteBody)))
+      : EditorState.createEmpty()
+    );
 
   const updateTitle = (e) => {
     e.preventDefault();
     setSelectedNote(e.target.value)
   };
 
-  // const saveContent = (content) => {
-  //   window.localStorage.setItem('content', JSON.stringify(convertToRaw(content)))
-  // }
-
-  // const handleBody = (editorState) => {
-  //   const contentState = editorState.getCurrentContent();
-  //   saveContent(contentState);
-  //   setEditorState(
-  //     editorState = EditorState.createWithContent(
-  //       convertFromRaw(JSON.parse(content))))
-  // }
-
-  const handleBody = () => {
-
+  const updateBody = (content) => {
+    setSelectedNoteBody(JSON.stringify(convertToRaw(content)))
   }
 
-  // const content = window.localStorage.getItem('content');
-  //   content ?
-  //     setEditorState(
-  //     setEditorState(EditorState.createEmpty())
+  const handleBody = (editorState) => {
+    const contentState = editorState.getCurrentContent();
+    updateBody(contentState);
+    setEditorState(editorState);
+  }
+
+  // how to access the body object, today's task!
       
 
   return (
@@ -65,7 +60,7 @@ const RightSideBar = ({
           className="draft"
           editorState={editorState}
           plugins={plugins} 
-          onChange={setSelectedNoteBody} /> 
+          onChange={handleBody} /> 
       </div>
 
     </div>
