@@ -45,8 +45,9 @@ const LeftSideBar = ({
             }}
           >
             <ListItemText primary={notes.title} />
+            {selectedNoteIndex ?
             <DeleteIcon className="deleteIcon" 
-              onClick={delData} />
+              onClick={delData} /> : ''}
           </ListItem>
         </section>
       ))}

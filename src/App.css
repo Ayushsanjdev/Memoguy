@@ -5,7 +5,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   max-width: 1220px;
-  min-height: 100vh;
+  min-height: 103vh;
   margin: 0 auto;
   scroll-behavior: smooth;
   background: linear-gradient(#dddfd4,#fae596, #3fb0ac );
@@ -13,10 +13,6 @@ body {
 
 *::-webkit-scrollbar {
   width: 5px;
-}
-
-*::-webkit-scrollbar-track {
-  background: aliceblue; 
 }
 
 *::-webkit-scrollbar-thumb {
@@ -73,16 +69,17 @@ main {
 .leftsidebar {
   width: 250px;
   height: 100%;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
   background-color: #fff;
   border: 2px groove #dddfd4;
-  border-radius: 10px;
 }
 
 .leftsidebar .list {
-  height: 54px;
+  height: 50px;
   border-radius: 5px;
   border: outset;
+  
 }
 
 
@@ -93,17 +90,24 @@ main {
 }
 
 .draft-editor-wrapper {
-  height: 374px;
+  height: 400px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 0 0.5rem;
+  border: 1px groove lightblue;
+  font-family: Open Sans;
+
 } 
 
-.quillTitle {
+.editorTitle {
   text-align: center;
   padding: 0.5rem;
-  background-color: rgb(189, 218, 228);
+  background-color: #3fb0ac70;
   font-family: sans-serif;
   font-weight: 600;
   border: none;
   margin: 0 auto;
+  color: #fff;
 }
 
 .open {
@@ -121,7 +125,6 @@ small {
 .deleteIcon:hover {
   color: red;
 }
-
 
 a {
   color: rgb(255, 0, 55);

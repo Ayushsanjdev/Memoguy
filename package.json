@@ -6,6 +6,9 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@draft-js-plugins/editor": "^4.1.0",
+    "@draft-js-plugins/hashtag": "^4.2.1",
+    "@draft-js-plugins/linkify": "^4.1.1",
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
     "@react-spring/web": "^9.2.3",

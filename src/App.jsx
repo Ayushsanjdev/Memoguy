@@ -6,7 +6,6 @@ import RightSideBar from "./components/RightSideBar";
 import "./firebase/config";
 import firebase from "firebase/app";
 import "firebase/firestore";
-import { EditorState } from "draft-js";
 
 const App = () => {
   const [showTitle, setShowTitle] = useState("");
@@ -22,18 +21,19 @@ const App = () => {
     getData();
   }, []);
 
-  // useEffect(async () => {
-  //   updateData();
-  // }, [showTitle, showBody])
+  useEffect(() => {
+    selectedNoteIndex ?
+    updateData() : ''
+  }, [selectedNote, selectedNoteBody ])
 
   const updateData = () => {
     firebase
       .firestore()
       .collection("notes")
       .doc(selectedNoteIndex)
-      n.update({
-      title: showTitle,
-      body: showBody,
+      .update({
+      title: selectedNote,
+      body: selectedNoteBody,
     });
   };
 
@@ -109,7 +109,7 @@ const App = () => {
           setSelectedNoteBody={setSelectedNoteBody}
         />
 
-        {selectedNote ? (
+        {selectedNote !== null ? (
           <RightSideBar
             allNotes={allNotes}
             setShowBody={setShowBody}
