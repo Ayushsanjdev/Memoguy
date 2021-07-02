@@ -67,7 +67,7 @@ main {
 }
 
 .leftsidebar {
-  width: 250px;
+  width: 350px;
   height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -79,9 +79,11 @@ main {
   height: 50px;
   border-radius: 5px;
   border: outset;
-  
 }
 
+.leftsidebar .list:focus {
+  background-color: #ccf3f2;
+}
 
 .editor {
   width: 100%;
@@ -90,13 +92,12 @@ main {
 }
 
 .draft-editor-wrapper {
-  height: 400px;
+  height: 305px;
   overflow-x: hidden;
   overflow-y: scroll;
   padding: 0 0.5rem;
   border: 1px groove lightblue;
   font-family: Open Sans;
-
 } 
 
 .editorTitle {
@@ -109,6 +110,29 @@ main {
   margin: 0 auto;
   color: #fff;
 }
+
+.toolbar input[type="button"] {
+  border: 1px solid #eee;
+  background-color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 2px;
+  margin-bottom: 2px;
+}
+
+.toolbar input[type="button"]:active {
+  transform: scale(.95);
+}
+
+.toolbar input[type="button"]:not(.active):hover {
+  background-color: #eee;
+}
+
+.toolbar input[type="button"].active {
+  background-color: turquoise;
+  border-color: transparent;
+}
+
 
 .open {
   display: flex;
