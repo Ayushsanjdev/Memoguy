@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { convertToRaw, convertFromRaw, EditorState } from "draft-js";
-import Editor from '@draft-js-plugins/editor';
+import { convertToRaw, EditorState, ContentState} from "draft-js";
 import createHashtagPlugin from '@draft-js-plugins/hashtag';
 import createLinkifyPlugin from '@draft-js-plugins/linkify';
+import InlineStylesEditor from "./EditorStyles";
 
 const hashtagPlugin = createHashtagPlugin();
 const linkifyPlugin = createLinkifyPlugin();
@@ -24,11 +24,11 @@ const RightSideBar = ({
 
   const [editorState, setEditorState] = useState
     (
-      // selectedNoteBody === null ? 
-      // EditorState.createWithContent(
-      //   convertFromRaw(JSON.parse(selectedNoteBody)))
-      // :
-       EditorState.createEmpty()
+      selectedNoteBody === null ? 
+      EditorState.createEmpty()
+      :
+      EditorState.createWithContent(ContentState.
+        createFromText(selectedNoteBody)) // now editorstate is selctedNoteBody's text
     );
 
   const updateTitle = (e) => {
@@ -39,10 +39,8 @@ const RightSideBar = ({
   const updateBody = (content) => {
     const stringContent = JSON.stringify(
       convertToRaw(content));
-    const textContent = JSON.parse(stringContent);    
+    const textContent = JSON.parse(stringContent);   // parsing json and accessing the text on nextline  
     setSelectedNoteBody(textContent.blocks[0].text);
-    // setSelectedNoteBody(JSON.stringify(
-    //   convertToRaw(content)))
   }
 
   const handleBody = (editorState) => {
@@ -50,23 +48,22 @@ const RightSideBar = ({
     updateBody(contentState);
     setEditorState(editorState);
   }
-      
 
   return (
     <div className="editor">
+
       <div className="editorTitle">
         <input type="text" 
           className="editorTitle"
           value={selectedNote} 
           onChange={updateTitle} />
       </div>
-      <div className="draft-editor-wrapper">
-        <Editor 
-          className="draft"
-          editorState={editorState}
-          plugins={plugins} 
-          onChange={handleBody} /> 
-      </div>
+
+      <InlineStylesEditor 
+        editorState={editorState}
+        setEditorState={setEditorState}
+        plugins={plugins}
+        handleBody={handleBody}/>
 
     </div>
   );
