@@ -24,9 +24,11 @@ const RightSideBar = ({
 
   const [editorState, setEditorState] = useState
     (
-      selectedNoteBody === null ? 
-      EditorState.createWithContent(convertFromRaw(JSON.parse(selectedNoteBody)))
-      : EditorState.createEmpty()
+      // selectedNoteBody === null ? 
+      // EditorState.createWithContent(
+      //   convertFromRaw(JSON.parse(selectedNoteBody)))
+      // :
+       EditorState.createEmpty()
     );
 
   const updateTitle = (e) => {
@@ -35,7 +37,12 @@ const RightSideBar = ({
   };
 
   const updateBody = (content) => {
-    setSelectedNoteBody(JSON.stringify(convertToRaw(content)))
+    const stringContent = JSON.stringify(
+      convertToRaw(content));
+    const textContent = JSON.parse(stringContent);    
+    setSelectedNoteBody(textContent.blocks[0].text);
+    // setSelectedNoteBody(JSON.stringify(
+    //   convertToRaw(content)))
   }
 
   const handleBody = (editorState) => {
@@ -43,8 +50,6 @@ const RightSideBar = ({
     updateBody(contentState);
     setEditorState(editorState);
   }
-
-  // how to access the body object, today's task!
       
 
   return (
