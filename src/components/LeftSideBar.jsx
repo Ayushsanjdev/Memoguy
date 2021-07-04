@@ -34,9 +34,7 @@ const LeftSideBar = ({
             button
             className="list"
             selected={
-              selectedNote === notes.title ||
-              selectedNoteIndex === notes.id ||
-              selectedNoteBody === notes.body
+              selectedNoteIndex === notes.id
             }
             onClick={(event) => {
               handleListItemClick(event, notes.title);
