@@ -92,7 +92,7 @@ main {
 }
 
 .draft-editor-wrapper {
-  height: 305px;
+  height: 340px;
   overflow-x: hidden;
   overflow-y: scroll;
   padding: 0 0.5rem;
