@@ -1,5 +1,5 @@
 import React from 'react';
-import {Editor, RichUtils, getDefaultKeyBinding, KeyBindingUtil} from 'draft-js';
+import {Editor, RichUtils, getDefaultKeyBinding, DraftEditorCommand, KeyBindingUtil} from 'draft-js';
 
 
 const keyBindingFunction = (event) => {
@@ -34,21 +34,21 @@ const EditorStyles = ({setEditorState, editorState, handleBody, plugins}) => {
   }
 
   const handleKeyCommand = () => {
-    var editorState = RichUtils.handleKeyCommand(editorState, cmd);
+    var editorState = RichUtils.handleKeyCommand(editorState, DraftEditorCommand);
 
-    if (!editorState && cmd === 'strikethrough') {
+    if (!editorState && DraftEditorCommand === 'strikethrough') {
       editorState = RichUtils.toggleInlineStyle(editorState, 'STRIKETHROUGH');
     }
 
-    if (!editorState && cmd === 'blockquote') {
+    if (!editorState && DraftEditorCommand === 'blockquote') {
       editorState = RichUtils.toggleBlockType(editorState, 'blockquote');
     }
 
-    if (!editorState && cmd === 'ordered-list') {
+    if (!editorState && DraftEditorCommand === 'ordered-list') {
       editorState = RichUtils.toggleBlockType(editorState, 'ordered-list-item');
     }
 
-    if (!editorState && cmd === 'unordered-list') {
+    if (!editorState && DraftEditorCommand === 'unordered-list') {
       editorState = RichUtils.toggleBlockType(editorState, 'unordered-list-item');
     }
 
