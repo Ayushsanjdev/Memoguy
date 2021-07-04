@@ -26,24 +26,29 @@ const keyBindingFunction = (event) => {
   return getDefaultKeyBinding(event);
 }
 
-const InlineStylesEditor = ({setEditorState, editorState, handleBody, plugins}) => {
+const EditorStyles = ({setEditorState, editorState, handleBody, plugins}) => {
+
+  const editor = React.useRef(null);
+  function focusEditor() {
+    editor.current.focus();
+  }
 
   const handleKeyCommand = () => {
-    var editorState = RichUtils.handleKeyCommand(editorState, command);
+    var editorState = RichUtils.handleKeyCommand(editorState, cmd);
 
-    if (!editorState && command === 'strikethrough') {
+    if (!editorState && cmd === 'strikethrough') {
       editorState = RichUtils.toggleInlineStyle(editorState, 'STRIKETHROUGH');
     }
 
-    if (!editorState && command === 'blockquote') {
+    if (!editorState && cmd === 'blockquote') {
       editorState = RichUtils.toggleBlockType(editorState, 'blockquote');
     }
 
-    if (!editorState && command === 'ordered-list') {
+    if (!editorState && cmd === 'ordered-list') {
       editorState = RichUtils.toggleBlockType(editorState, 'ordered-list-item');
     }
 
-    if (!editorState && command === 'unordered-list') {
+    if (!editorState && cmd === 'unordered-list') {
       editorState = RichUtils.toggleBlockType(editorState, 'unordered-list-item');
     }
 
@@ -51,7 +56,6 @@ const InlineStylesEditor = ({setEditorState, editorState, handleBody, plugins}) 
       setEditorState(editorState);
       return 'handled';
     }
-
     return 'not-handled';
   }
 
@@ -93,7 +97,8 @@ const InlineStylesEditor = ({setEditorState, editorState, handleBody, plugins}) 
 
   const renderInlineStyleButton = (value, style) => {
 
-    const currentInlineStyle = editorState.getCurrentInlineStyle();
+    const currentInlineStyle = editorState
+      .getCurrentInlineStyle();
     let className = '';
     if (currentInlineStyle.has(style)) {
       className = 'active';
@@ -198,8 +203,10 @@ const InlineStylesEditor = ({setEditorState, editorState, handleBody, plugins}) 
     </div>
     </div>
 
-    <div className="draft-editor-wrapper">
+    <div className="draft-editor-wrapper" 
+      onClick={focusEditor}>
       <Editor 
+        ref={editor}
         className="draft"
         editorState={editorState}
         plugins={plugins} 
@@ -211,4 +218,4 @@ const InlineStylesEditor = ({setEditorState, editorState, handleBody, plugins}) 
   )
 }
 
-export default InlineStylesEditor;
+export default EditorStyles;
