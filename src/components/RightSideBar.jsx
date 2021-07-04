@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { convertToRaw, EditorState, ContentState}
  from "draft-js";
 import createHashtagPlugin from '@draft-js-plugins/hashtag';
@@ -23,7 +23,7 @@ const RightSideBar = ({
   showTitle,
 }) => {
 
-  const [editorState, setEditorState] = useState(
+  const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty());
 
   const updateTitle = (e) => {
