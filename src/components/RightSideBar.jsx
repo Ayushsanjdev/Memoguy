@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { convertToRaw, EditorState, ContentState}
  from "draft-js";
 import createHashtagPlugin from '@draft-js-plugins/hashtag';
@@ -23,7 +23,7 @@ const RightSideBar = ({
   showTitle,
 }) => {
 
-  const [editorState, setEditorState] = useState(() =>
+  const [editorState, setEditorState] = useState(
     EditorState.createEmpty());
 
   const updateTitle = (e) => {
@@ -36,12 +36,12 @@ const RightSideBar = ({
     const stringContent = JSON.stringify(
       convertToRaw(contentState));
     const textContent = JSON.parse(stringContent);
-    // const mainText = textContent.blocks[0].text;
-    setEditorState(textContent);
-    setSelectedNoteBody(textContent);
+    const mainText = textContent.blocks[0].text;
+    setSelectedNoteBody(mainText);
+    setEditorState(EditorState.createWithContent(
+      ContentState.createFromText(mainText)))
   }
 
-  
 
   return (
     <div className="editor">
