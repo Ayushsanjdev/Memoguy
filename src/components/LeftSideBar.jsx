@@ -2,6 +2,7 @@ import React from "react";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from '@material-ui/icons/Edit';
 
 const LeftSideBar = ({
   allNotes,
@@ -12,6 +13,7 @@ const LeftSideBar = ({
   setSelectedNoteIndex,
   selectedNoteBody,
   setSelectedNoteBody,
+  focusEditor
 }) => {
   
   const handleListItemClick = (event, title) => {
@@ -43,9 +45,13 @@ const LeftSideBar = ({
             }}
           >
             <ListItemText primary={notes.title} />
+            <EditIcon 
+              className="editIcon"
+              onClick={focusEditor} /> 
             {selectedNoteIndex ?
             <DeleteIcon className="deleteIcon" 
               onClick={delData} /> : ''}
+            
           </ListItem>
         </section>
       ))}

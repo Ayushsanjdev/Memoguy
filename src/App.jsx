@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
 import Head from "./components/Head";
 import LeftSideBar from "./components/LeftSideBar";
@@ -6,6 +6,7 @@ import RightSideBar from "./components/RightSideBar";
 import "./firebase/config";
 import firebase from "firebase/app";
 import "firebase/firestore";
+import { EditorState } from "draft-js";
 
 const App = () => {
   const [showTitle, setShowTitle] = useState("");
@@ -16,15 +17,12 @@ const App = () => {
     useState(null);
   const [selectedNoteBody, setSelectedNoteBody]
    = useState(null);
+  const editor = useRef();
 
-  useEffect(() => {
-    getData();
-  }, []);
-
-  useEffect(() => {
-    selectedNoteIndex ?
-    updateData() : ''
-  }, [selectedNote, selectedNoteBody ])
+  const focusEditor = () => {
+    editor.current.focus();
+  }
+  
 
   const updateData = () => {
     firebase
@@ -77,6 +75,25 @@ const App = () => {
         });
   };
 
+  useEffect(() => {
+    getData();
+  }, []);
+
+  // useEffect(() => {
+  //   selectedNoteIndex ?
+  //   updateData() : ''
+  // }, [selectedNote, selectedNoteBody])
+
+  useEffect( async() => {
+    let mounted = true;
+    if(mounted)
+    selectedNoteIndex ?
+    updateData() : ''
+    return () => {
+      mounted = false;
+    }
+  }, [selectedNote, selectedNoteBody])
+
   const delData = () => {
     firebase
       .firestore()
@@ -107,6 +124,8 @@ const App = () => {
           setSelectedNote={setSelectedNote}
           selectedNoteBody={selectedNoteBody}
           setSelectedNoteBody={setSelectedNoteBody}
+          focusEditor={focusEditor}
+          editor={editor}
         />
 
         {selectedNote !== null ? (
@@ -121,6 +140,8 @@ const App = () => {
             updateData={updateData}
             selectedNoteBody={selectedNoteBody}
             setSelectedNoteBody={setSelectedNoteBody}
+            focusEditor={focusEditor}
+            editor={editor}
           />
         ) : (
           <p

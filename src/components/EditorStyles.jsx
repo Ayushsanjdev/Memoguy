@@ -210,7 +210,7 @@ const EditorStyles = ({setEditorState, editorState, handleBody, plugins}) => {
         className="draft"
         editorState={editorState}
         plugins={plugins} 
-        onChange={handleBody}
+        onChange={setEditorState}
         handleKeyCommand={handleKeyCommand}
         keyBindingFn={keyBindingFunction} /> 
     </div>

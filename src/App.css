@@ -67,7 +67,7 @@ main {
 }
 
 .leftsidebar {
-  width: 350px;
+  width: 380px;
   height: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -91,14 +91,21 @@ main {
   background-color: #fff;
 }
 
-.draft-editor-wrapper {
+.quillEditor {
+  height: 390px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  font-family: Open Sans;
+}
+
+/* .draft-editor-wrapper {
   height: 340px;
   overflow-x: hidden;
   overflow-y: scroll;
   padding: 0 0.5rem;
   border: 1px groove lightblue;
   font-family: Open Sans;
-} 
+}  */
 
 .editorTitle {
   text-align: center;
@@ -111,7 +118,16 @@ main {
   color: #fff;
 }
 
-.toolbar input[type="button"] {
+.titleEdit {
+  position: absolute;
+  padding: 4px;
+}
+
+.editIcon {
+  margin-right: 10px;
+}
+
+/* .toolbar input[type="button"] {
   border: 1px solid #eee;
   background-color: #fff;
   border-radius: 5px;
@@ -131,7 +147,7 @@ main {
 .toolbar input[type="button"].active {
   background-color: turquoise;
   border-color: transparent;
-}
+} */
 
 
 .open {
