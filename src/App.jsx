@@ -3,7 +3,7 @@ import "./App.css";
 import Head from "./components/Head";
 import LeftSideBar from "./components/LeftSideBar";
 import RightSideBar from "./components/RightSideBar";
-import "./firebase/config";
+import "./helper/firebase_config";
 import firebase from "firebase/app";
 import "firebase/firestore";
 
@@ -61,7 +61,6 @@ const App = () => {
           createdAt: firebase
             .firestore
             .FieldValue
-          
             .serverTimestamp(),
         })
         .then(() => {
@@ -81,7 +80,7 @@ const App = () => {
     let mounted = true;
     if(mounted)
     selectedNoteIndex ?
-    await updateData() : ''
+      updateData() : ''
     return () => {
       mounted = false;
     }
