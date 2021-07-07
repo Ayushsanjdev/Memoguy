@@ -6,6 +6,7 @@ import RightSideBar from "./components/RightSideBar";
 import "./helper/firebase_config";
 import firebase from "firebase/app";
 import "firebase/firestore";
+import { debounce } from "./helper/debounceFunction";
 
 const App = () => {
   const [showTitle, setShowTitle] = useState("");
@@ -22,7 +23,7 @@ const App = () => {
     editor.current.focus();
   }
 
-  const updateData = () => {
+  const updateData = debounce(() => {
     firebase
       .firestore()
       .collection("notes")
@@ -30,8 +31,8 @@ const App = () => {
       .update({
       title: selectedNote,
       body: selectedNoteBody,
-    });
-  };
+    })
+  }, 2000);
 
   const getData = () => {
     firebase
@@ -76,7 +77,7 @@ const App = () => {
     getData();
   }, []);
 
-  useEffect( async() => {
+  useEffect( () => {
     let mounted = true;
     if(mounted)
     selectedNoteIndex ?
@@ -89,7 +90,8 @@ const App = () => {
   const delData = () => {
     const confirmation = window
     .confirm
-      (`Are you sure want to delete everything of ${selectedNote}?`);
+      (`Are you sure want to delete everything of
+         ${selectedNote}?`);
     confirmation ?
     firebase
       .firestore()
