@@ -45,13 +45,13 @@ const LeftSideBar = ({
             }}
           >
             <ListItemText primary={notes.title} />
-            <EditIcon 
-              className="editIcon"
-              onClick={focusEditor} /> 
-            {selectedNoteIndex ?
-            <DeleteIcon className="deleteIcon" 
-              onClick={delData} /> : ''}
-            
+            {selectedNoteIndex !== notes.id ?
+            <EditIcon /> : ''}
+            {selectedNoteIndex === notes.id ?
+            <>
+              <small className="editing">Editing...</small>
+            </>
+             : ''}
           </ListItem>
         </section>
       ))}

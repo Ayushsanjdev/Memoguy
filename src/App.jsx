@@ -6,7 +6,6 @@ import RightSideBar from "./components/RightSideBar";
 import "./firebase/config";
 import firebase from "firebase/app";
 import "firebase/firestore";
-import { EditorState } from "draft-js";
 
 const App = () => {
   const [showTitle, setShowTitle] = useState("");
@@ -78,22 +77,21 @@ const App = () => {
     getData();
   }, []);
 
-  // useEffect(() => {
-  //   selectedNoteIndex ?
-  //   updateData() : ''
-  // }, [selectedNote, selectedNoteBody])
-
   useEffect( async() => {
     let mounted = true;
     if(mounted)
     selectedNoteIndex ?
-    updateData() : ''
+    await updateData() : ''
     return () => {
       mounted = false;
     }
   }, [selectedNote, selectedNoteBody])
 
   const delData = () => {
+    const confirmation = window
+    .confirm
+      (`Are you sure want to delete everything of ${selectedNote}?`);
+    confirmation ?
     firebase
       .firestore()
       .collection("notes")
@@ -102,7 +100,8 @@ const App = () => {
       .then(() => {
         console.log("successfully deleted");
         setSelectedNote(null);
-      });
+        window.alert("Deleted Successfully!")
+      }) : window.alert("Phew! Saved it!");
   };
 
   return (
@@ -141,6 +140,7 @@ const App = () => {
             setSelectedNoteBody={setSelectedNoteBody}
             focusEditor={focusEditor}
             editor={editor}
+            delData={delData}
           />
         ) : (
           <p

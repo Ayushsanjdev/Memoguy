@@ -85,6 +85,7 @@ main {
   background-color: #ccf3f2;
 }
 
+
 .editor {
   width: 100%;
   height: 100%;
@@ -121,10 +122,17 @@ main {
 .titleEdit {
   position: absolute;
   padding: 4px;
+  cursor: pointer;
 }
 
 .editIcon {
   margin-right: 10px;
+}
+
+.editing {
+  display: block;
+  font-size: x-small;
+  margin-top: -5px;
 }
 
 /* .toolbar input[type="button"] {
@@ -162,8 +170,13 @@ small {
   color: rgb(255, 75, 9);
 }
 
+.deleteIcon {
+  vertical-align: middle;
+}
+
 .deleteIcon:hover {
   color: red;
+  cursor: pointer;
 }
 
 a {

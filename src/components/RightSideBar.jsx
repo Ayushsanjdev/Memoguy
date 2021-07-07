@@ -5,6 +5,7 @@ import React, { useState, useRef } from "react";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from "@material-ui/icons/Delete";
 
 // import { convertToRaw, EditorState, ContentState} from "draft-js";
 // import createHashtagPlugin from '@draft-js-plugins/hashtag';
@@ -27,7 +28,8 @@ const RightSideBar = ({
   setSelectedNoteBody,
   updateData,
   showTitle,
-  editor
+  editor,
+  delData
 }) => {
 
   // const [editorState, setEditorState] = useState(() =>
@@ -67,6 +69,8 @@ const RightSideBar = ({
           className="editorTitle"
           value={selectedNote} 
           onChange={updateTitle}/>
+        <DeleteIcon className="deleteIcon" 
+          onClick={delData} />
       </div>
 
       <ReactQuill 
