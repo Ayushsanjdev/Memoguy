@@ -22,7 +22,6 @@ const App = () => {
   const focusEditor = () => {
     editor.current.focus();
   }
-  
 
   const updateData = () => {
     firebase
